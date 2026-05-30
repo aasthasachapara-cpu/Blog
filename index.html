@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog Platform</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Blog Platform</h1>
+        <p>Write posts, edit your drafts, and join the conversation.</p>
+      </div>
+      <div id="session" class="session"></div>
+    </header>
+
+    <main class="layout">
+      <section class="panel auth-panel" id="authPanel">
+        <div class="tabs">
+          <button class="tab active" data-auth-tab="login">Login</button>
+          <button class="tab" data-auth-tab="register">Register</button>
+        </div>
+        <form id="authForm" class="stack">
+          <input id="username" autocomplete="username" placeholder="Username" required minlength="3" />
+          <input id="password" autocomplete="current-password" type="password" placeholder="Password" required minlength="6" />
+          <button type="submit" id="authSubmit">Login</button>
+        </form>
+      </section>
+
+      <section class="panel editor-panel hidden" id="editorPanel">
+        <h2 id="editorTitle">Create post</h2>
+        <form id="postForm" class="stack">
+          <input id="postTitle" placeholder="Post title" required />
+          <textarea id="postContent" placeholder="Share your thoughts..." required rows="8"></textarea>
+          <div class="actions">
+            <button type="submit">Publish</button>
+            <button type="button" class="secondary hidden" id="cancelEdit">Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="feed">
+        <div class="feed-head">
+          <h2>Recent posts</h2>
+          <span id="status"></span>
+        </div>
+        <div id="posts" class="posts"></div>
+      </section>
+    </main>
+
+    <template id="postTemplate">
+      <article class="post">
+        <div class="post-head">
+          <div>
+            <h3></h3>
+            <p class="meta"></p>
+          </div>
+          <div class="owner-actions hidden">
+            <button class="small edit">Edit</button>
+            <button class="small danger delete">Delete</button>
+          </div>
+        </div>
+        <p class="content"></p>
+        <button class="link comments-toggle"></button>
+        <div class="comments hidden">
+          <div class="comment-list"></div>
+          <form class="comment-form">
+            <input placeholder="Write a comment" required />
+            <button type="submit">Comment</button>
+          </form>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
